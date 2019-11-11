@@ -31,6 +31,8 @@ _TASK_IMAGES_EXTRACTOR = '_cvat_task_images'
 _TASK_ANNO_EXTRACTOR = '_cvat_task_anno'
 _TASK_IMAGES_REMOTE_EXTRACTOR = 'cvat_rest_api_task_images'
 
+EXPORT_FORMAT_DATUMARO_PROJECT = "datumaro_project"
+EXPORT_FORMAT_DATUMARO_REMOTE_PROJECT = "datumaro_project_remote"
 
 class TaskProject:
     @staticmethod
@@ -203,9 +205,9 @@ class TaskProject:
     def export(self, format, save_dir, save_images=False, server_url=None):
         if self._dataset is None:
             self._init_dataset()
-        if format == DEFAULT_FORMAT:
+        if format == EXPORT_FORMAT_DATUMARO_PROJECT:
             self._dataset.save(save_dir=save_dir, save_images=save_images)
-        elif format == DEFAULT_FORMAT_REMOTE:
+        elif format == EXPORT_FORMAT_DATUMARO_REMOTE_PROJECT:
             self._remote_export(save_dir=save_dir, server_url=server_url)
         else:
             self._dataset.export(output_format=format,
@@ -274,8 +276,7 @@ class TaskProject:
             osp.join(target_dir, _TASK_IMAGES_REMOTE_EXTRACTOR + '.py'))
 
 
-DEFAULT_FORMAT = "datumaro_project"
-DEFAULT_FORMAT_REMOTE = "datumaro_project_remote"
+DEFAULT_FORMAT = EXPORT_FORMAT_DATUMARO_PROJECT
 DEFAULT_CACHE_TTL = timedelta(hours=10)
 CACHE_TTL = DEFAULT_CACHE_TTL
 
@@ -332,3 +333,15 @@ def clear_export_cache(task_id, file_path, file_ctime):
     except Exception:
         log_exception(slogger.task[task_id])
         raise
+
+def get_export_formats():
+    from datumaro.components import converters
+
+    formats = [
+        EXPORT_FORMAT_DATUMARO_PROJECT,
+        EXPORT_FORMAT_DATUMARO_REMOTE_PROJECT,
+    ]
+
+    for name, _ in converters.items:
+        formats.append(name)
+    return formats
