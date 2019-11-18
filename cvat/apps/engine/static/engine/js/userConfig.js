@@ -116,8 +116,8 @@ class Config {
             },
 
             delete_shape: {
-                value: "del,shift+del".split(","),
-                view_value: "Del, Shift + Del",
+                value: "d,shift+del".split(","),
+                view_value: "d, Shift + Del",
                 description:
                     "delete active shape (use shift for force deleting)"
             },
@@ -129,14 +129,14 @@ class Config {
             },
 
             next_frame: {
-                value: "f",
-                view_value: "F",
+                value: "t",
+                view_value: "t",
                 description: "move to next player frame"
             },
 
             prev_frame: {
-                value: "d",
-                view_value: "D",
+                value: "r",
+                view_value: "R",
                 description: "move to previous player frame"
             },
 
@@ -195,8 +195,8 @@ class Config {
             },
 
             save_work: {
-                value: "ctrl+s",
-                view_value: "Ctrl + S",
+                value: "s",
+                view_value: "S",
                 description: "save work on the server"
             },
 
@@ -273,8 +273,8 @@ class Config {
             },
 
             undo: {
-                value: "ctrl+z",
-                view_value: "Ctrl + Z",
+                value: "z",
+                view_value: "Z",
                 description: "undo"
             },
 
