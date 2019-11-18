@@ -30,8 +30,8 @@ class Config {
             },
 
             switch_draw_mode: {
-                value: "r",
-                view_value: "R",
+                value: "n",
+                view_value: "N",
                 description: "start draw / stop draw"
             },
 
