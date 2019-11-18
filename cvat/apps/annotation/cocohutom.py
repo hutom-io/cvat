@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 format_spec = {
-    "name": "COCO",
+    "name": "COCOHUTOM",
     "dumpers": [
         {
             "display_name": "{name} {format} {version}",
@@ -246,10 +246,10 @@ def dump(file_object, annotations):
         new_anno['id'] = segm_id
         new_anno['image_id'] = image.frame
         new_anno['iscrowd'] = 0
-        new_anno['segmentation'] = obj['points']
+        #new_anno['segmentation'] = obj['points']
         area, bbox = polygon_area_and_bbox(obj['points'], image.height, image.width)
         new_anno['area'] = float(np.sum(area))
-        new_anno['bbox'] = bbox                
+        new_anno['bbox'] = bbox        
         result_annotation['annotations'].append(new_anno)
 
     result_annotation = OrderedDict([

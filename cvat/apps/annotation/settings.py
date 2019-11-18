@@ -10,6 +10,7 @@ BUILTIN_FORMATS = (
     os.path.join(path_prefix, 'pascal_voc.py'),
     os.path.join(path_prefix, 'yolo.py'),
     os.path.join(path_prefix, 'coco.py'),
+    os.path.join(path_prefix, 'cocohutom.py'),
     os.path.join(path_prefix, 'mask.py'),
     os.path.join(path_prefix, 'tfrecord.py'),
 )
