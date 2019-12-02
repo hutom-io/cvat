@@ -337,7 +337,7 @@ class Config {
             },
 
             player_speed: {
-                value: "50 FPS",
+                value: "25 FPS",
                 description: "playback speed of the player"
             },
 

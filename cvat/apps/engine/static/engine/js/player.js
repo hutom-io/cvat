@@ -144,7 +144,7 @@ class PlayerModel extends Listener {
 
         this._settings = {
             multipleStep: 15,
-            fps: 50,
+            fps: 25,
             rotateAll: task.mode === "interpolation",
             resetZoom: task.mode === "annotation"
         }
@@ -354,7 +354,7 @@ class PlayerModel extends Listener {
 
         const { rotation } = this.geometry
 
-        if (rotation / 90 % 2) {
+        if ((rotation / 90) % 2) {
             // 90, 270, ..
             this._geometry.scale = Math.min(
                 this._geometry.width / img.height,
@@ -402,16 +402,16 @@ class PlayerModel extends Listener {
                 (this._geometry.width - img.width * this._geometry.scale) / 2
         } else {
             this._geometry.left =
-                (this._geometry.width / this._geometry.scale -
+                ((this._geometry.width / this._geometry.scale -
                     xtl * 2 -
                     boxWidth) *
-                this._geometry.scale /
+                    this._geometry.scale) /
                 2
             this._geometry.top =
-                (this._geometry.height / this._geometry.scale -
+                ((this._geometry.height / this._geometry.scale -
                     ytl * 2 -
                     boxHeight) *
-                this._geometry.scale /
+                    this._geometry.scale) /
                 2
         }
         window.cvat.player.geometry.scale = this._geometry.scale
@@ -425,8 +425,8 @@ class PlayerModel extends Listener {
         const oldScale = this._geometry.scale
         const newScale =
             value > 0
-                ? this._geometry.scale * 6 / 5
-                : this._geometry.scale * 5 / 6
+                ? (this._geometry.scale * 6) / 5
+                : (this._geometry.scale * 5) / 6
         this._geometry.scale = Math.clamp(
             newScale,
             MIN_PLAYER_SCALE,
@@ -892,14 +892,16 @@ class PlayerView {
         this._clockwiseRotationButtonUI.attr(
             "title",
             `
-            ${shortkeys.clockwise_rotation.view_value} - ${shortkeys
-                .clockwise_rotation.description}`
+            ${shortkeys.clockwise_rotation.view_value} - ${
+                shortkeys.clockwise_rotation.description
+            }`
         )
         this._counterClockwiseRotationButtonUI.attr(
             "title",
             `
-            ${shortkeys.counter_clockwise_rotation.view_value} - ${shortkeys
-                .counter_clockwise_rotation.description}`
+            ${shortkeys.counter_clockwise_rotation.view_value} - ${
+                shortkeys.counter_clockwise_rotation.description
+            }`
         )
 
         const playerGridOpacityInput = $("#playerGridOpacityInput")
@@ -918,8 +920,9 @@ class PlayerView {
         playerGridOpacityInput.attr(
             "title",
             `
-            ${shortkeys.change_grid_opacity.view_value} - ${shortkeys
-                .change_grid_opacity.description}`
+            ${shortkeys.change_grid_opacity.view_value} - ${
+                shortkeys.change_grid_opacity.description
+            }`
         )
 
         const playerGridStrokeInput = $("#playerGridStrokeInput")
@@ -932,8 +935,9 @@ class PlayerView {
         playerGridStrokeInput.attr(
             "title",
             `
-            ${shortkeys.change_grid_color.view_value} - ${shortkeys
-                .change_grid_color.description}`
+            ${shortkeys.change_grid_color.view_value} - ${
+                shortkeys.change_grid_color.description
+            }`
         )
 
         $("#playerGridSizeInput").on("change", e => {
@@ -997,8 +1001,9 @@ class PlayerView {
         this._frameNumber.attr(
             "title",
             `
-            ${shortkeys.focus_to_frame.view_value} - ${shortkeys.focus_to_frame
-                .description}`
+            ${shortkeys.focus_to_frame.view_value} - ${
+                shortkeys.focus_to_frame.description
+            }`
         )
 
         this._nextButtonUI
@@ -1010,8 +1015,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.next_frame.view_value} - ${shortkeys.next_frame
-                        .description}`
+                    `${shortkeys.next_frame.view_value} - ${
+                        shortkeys.next_frame.description
+                    }`
                 )
             )
 
@@ -1024,8 +1030,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.prev_frame.view_value} - ${shortkeys.prev_frame
-                        .description}`
+                    `${shortkeys.prev_frame.view_value} - ${
+                        shortkeys.prev_frame.description
+                    }`
                 )
             )
 
@@ -1038,8 +1045,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.play_pause.view_value} - ${shortkeys.play_pause
-                        .description}`
+                    `${shortkeys.play_pause.view_value} - ${
+                        shortkeys.play_pause.description
+                    }`
                 )
             )
 
@@ -1052,8 +1060,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.play_pause.view_value} - ${shortkeys.play_pause
-                        .description}`
+                    `${shortkeys.play_pause.view_value} - ${
+                        shortkeys.play_pause.description
+                    }`
                 )
             )
 
@@ -1066,8 +1075,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.forward_frame.view_value} - ${shortkeys
-                        .forward_frame.description}`
+                    `${shortkeys.forward_frame.view_value} - ${
+                        shortkeys.forward_frame.description
+                    }`
                 )
             )
 
@@ -1080,8 +1090,9 @@ class PlayerView {
                         "title"
                     )
                 ).html(
-                    `${shortkeys.backward_frame.view_value} - ${shortkeys
-                        .backward_frame.description}`
+                    `${shortkeys.backward_frame.view_value} - ${
+                        shortkeys.backward_frame.description
+                    }`
                 )
             )
 
