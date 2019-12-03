@@ -317,14 +317,14 @@ class Config {
 
         if (window.cvat && window.cvat.job && window.cvat.job.z_order) {
             this._shortkeys.inc_z = {
-                value: "+,=".split(","),
-                view_value: "+",
+                value: "[,]".split(","),
+                view_value: "[",
                 description: "increase z order for active shape"
             }
 
             this._shortkeys.dec_z = {
-                value: "-,_".split(","),
-                view_value: "-",
+                value: "[,]".split(","),
+                view_value: "[",
                 description: "decrease z order for active shape"
             }
         }
