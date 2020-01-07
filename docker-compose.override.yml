@@ -1,0 +1,21 @@
+version: "2.3"
+
+services:
+  cvat:
+    environment:
+      ALLOWED_HOSTS: '*'
+      CVAT_SHARE_URL: "/home/sharedir"
+    volumes:
+      - cvat_share:/home/django/share:ro
+    ports:
+      - "80:8080"
+
+volumes:
+  cvat_share:
+    driver_opts:
+      type: none
+      device: /home/sharedir
+      o: bind
+
+
+
